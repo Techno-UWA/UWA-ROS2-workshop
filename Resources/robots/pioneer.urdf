@@ -14,20 +14,23 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.0"/>
       <geometry name="pioneer_geom">
-        <mesh filename="<path_to_meshes_or_robot>/meshes/chassis.dae"/>
+        <mesh filename="../meshes/chassis.dae"/>
       </geometry>
-      <material name="ChassisRed"/>
+      <material name="ChassisRed">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+      
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.0"/>
       <geometry>
-        <mesh filename="<path_to_meshes_or_robot>/meshes/chassis.dae"/>
+        <mesh filename="../meshes/chassis.dae"/>
       </geometry>
     </collision>
   </link>
 
   <gazebo reference="chassis">
-    <material value="Gazebo/Red"/>
+    <material value="Gazebo/Red" />
   </gazebo>
   <joint name="base_chassis_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.00 0 0.177"/>
@@ -51,7 +54,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
-        <mesh filename="<path_to_meshes_or_robot>/meshes/top.dae"/>
+        <mesh filename="../meshes/top.dae"/>
       </geometry>
       <material name="TopBlack">
         <color rgba="0.038 0.038 0.038 1.0"/>
@@ -83,7 +86,7 @@
     <visual name="front_left_axle">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
-        <mesh filename="<path_to_meshes_or_robot>/meshes/p3at_meshes/axle.dae"/>
+        <mesh filename="../meshes/p3at_meshes/axle.dae"/>
       </geometry>
       <material name="AxleGrey">
         <color rgba="0.5 0.5 0.5 1"/>
@@ -114,7 +117,7 @@
     <visual name="front_left_hub">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
-        <mesh filename="<path_to_meshes_or_robot>/meshes/p3at_meshes/left_hubcap.dae"/>
+        <mesh filename="../meshes/p3at_meshes/left_hubcap.dae"/>
       </geometry>
       <material name="HubcapYellow">
         <color rgba="1.0 0.811 0.151 1.0"/>
@@ -145,7 +148,7 @@
     <visual name="front_left_wheel">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry name="pioneer_geom">
-        <mesh filename="<path_to_meshes_or_robot>/meshes/p3at_meshes/wheel.dae"/>
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
       </geometry>
       <material name="WheelBlack">
         <color rgba="0.117 0.117 0.117 1"/>
@@ -154,7 +157,7 @@
     <collision>
       <origin rpy="-1.57079635 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="<path_to_meshes_or_robot>/meshes/p3at_meshes/wheel.dae"/>
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
         <cylinder length="0.075" radius="0.111"/>
       </geometry>
     </collision>
@@ -178,6 +181,320 @@
       <kd>100.0</kd> <!--damping-->
   </gazebo>
 
+  <!-- Front Right Wheel -->
+  <link name="p3at_front_right_axle">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="front_right_axle">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/axle.dae"/>
+      </geometry>
+      <material name="AxleGrey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_front_right_axle">
+    <material value="Gazebo/Grey"/>
+  </gazebo>
+  <joint name="base_front_right_axle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.135 -0.156 0.111"/> <!-- Adjusted position -->
+    <parent link="base_link"/>
+    <child link="p3at_front_right_axle"/>
+  </joint>
+
+  <link name="p3at_front_right_hub">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="front_right_hub">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/right_hubcap.dae"/> <!-- Adjusted mesh file -->
+      </geometry>
+      <material name="HubcapYellow">
+        <color rgba="1.0 0.811 0.151 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_front_right_hub">
+    <material value="Gazebo/Yellow"/>
+  </gazebo>
+  <joint name="base_front_right_hub_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.041 0"/>
+    <parent link="p3at_front_right_axle"/>
+    <child link="p3at_front_right_hub"/>
+  </joint>
+
+  <link name="p3at_front_right_wheel">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
+    </inertial>
+    <visual name="front_right_wheel">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
+      </geometry>
+      <material name="WheelBlack">
+        <color rgba="0.117 0.117 0.117 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.57079635 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
+        <cylinder length="0.075" radius="0.111"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_front_right_wheel">
+    <material value="Gazebo/Black"/>
+  </gazebo>
+  <joint name="p3at_front_right_wheel_joint" type="continuous">
+    <axis xyz="0 1 0"/>
+    <anchor xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="p3at_front_right_hub"/>
+    <child link="p3at_front_right_wheel"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.7"/>
+  </joint>
+
+  <gazebo reference="p3at_front_right_wheel">
+    <kp>10000000.0</kp> <!--contact stiffness-->
+    <kd>100.0</kd> <!--damping-->
+  </gazebo>
+  
+
+  <!-- Back Right Wheel -->
+  <link name="p3at_back_right_axle">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="back_right_axle">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/axle.dae"/>
+      </geometry>
+      <material name="AxleGrey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_back_right_axle">
+    <material value="Gazebo/Grey"/>
+  </gazebo>
+  <joint name="base_back_right_axle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.135 -0.156 0.111"/> <!-- Adjusted position -->
+    <parent link="base_link"/>
+    <child link="p3at_back_right_axle"/>
+  </joint>
+
+  <link name="p3at_back_right_hub">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="back_right_hub">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/right_hubcap.dae"/> <!-- Adjusted mesh file -->
+      </geometry>
+      <material name="HubcapYellow">
+        <color rgba="1.0 0.811 0.151 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_back_right_hub">
+    <material value="Gazebo/Yellow"/>
+  </gazebo>
+  <joint name="base_back_right_hub_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.041 0"/>
+    <parent link="p3at_back_right_axle"/>
+    <child link="p3at_back_right_hub"/>
+  </joint>
+
+  <link name="p3at_back_right_wheel">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
+    </inertial>
+    <visual name="back_right_wheel">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
+      </geometry>
+      <material name="WheelBlack">
+        <color rgba="0.117 0.117 0.117 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.57079635 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
+        <cylinder length="0.075" radius="0.111"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_back_right_wheel">
+    <material value="Gazebo/Black"/>
+  </gazebo>
+  <joint name="p3at_back_right_wheel_joint" type="continuous">
+    <axis xyz="0 1 0"/>
+    <anchor xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="p3at_back_right_hub"/>
+    <child link="p3at_back_right_wheel"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.7"/>
+  </joint>
+
+  <gazebo reference="p3at_back_right_wheel">
+    <kp>10000000.0</kp> <!--contact stiffness-->
+    <kd>100.0</kd> <!--damping-->
+  </gazebo>
+
+
+  <!-- Back Left Wheel -->
+  <link name="p3at_back_left_axle">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="back_left_axle">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/axle.dae"/>
+      </geometry>
+      <material name="AxleGrey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_back_left_axle">
+    <material value="Gazebo/Grey"/>
+  </gazebo>
+  <joint name="base_back_left_axle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.135 0.156 0.111"/> <!-- Adjusted position -->
+    <parent link="base_link"/>
+    <child link="p3at_back_left_axle"/>
+  </joint>
+
+  <link name="p3at_back_left_hub">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="back_left_hub">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/left_hubcap.dae"/> <!-- Adjusted mesh file -->
+      </geometry>
+      <material name="HubcapYellow">
+        <color rgba="1.0 0.811 0.151 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_back_left_hub">
+    <material value="Gazebo/Yellow"/>
+  </gazebo>
+  <joint name="base_back_left_hub_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0.041 0"/>
+    <parent link="p3at_back_left_axle"/>
+    <child link="p3at_back_left_hub"/>
+  </joint>
+
+  <link name="p3at_back_left_wheel">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428" iyz="0" izz="0.011763977943"/>
+    </inertial>
+    <visual name="back_left_wheel">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="pioneer_geom">
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
+      </geometry>
+      <material name="WheelBlack">
+        <color rgba="0.117 0.117 0.117 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.57079635 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/p3at_meshes/wheel.dae"/>
+        <cylinder length="0.075" radius="0.111"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="p3at_back_left_wheel">
+    <material value="Gazebo/Black"/>
+  </gazebo>
+  <joint name="p3at_back_left_wheel_joint" type="continuous">
+    <axis xyz="0 1 0"/>
+    <anchor xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="p3at_back_left_hub"/>
+    <child link="p3at_back_left_wheel"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.7"/>
+  </joint>
+
+  <gazebo reference="p3at_back_left_wheel">
+    <kp>10000000.0</kp> <!--contact stiffness-->
+    <kd>100.0</kd> <!--damping-->
+  </gazebo>
+  
   <gazebo>
     <plugin
       filename="libignition-gazebo-diff-drive-system.so"
