@@ -1,0 +1,9 @@
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/uninstall.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/package1_uninstall.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/test.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/edit_cache.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/rebuild_cache.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/list_install_components.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/install.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/install/local.dir
+/home/techno/Mystuff/ROS2/UWA-ROS2-workshop/Workspace/build/package1/CMakeFiles/install/strip.dir
